@@ -115,6 +115,7 @@ let s:delimiterMap = {
     \ 'clojure': { 'left': ';' },
     \ 'cmake': { 'left': '#' },
     \ 'conkyrc': { 'left': '#' },
+    \ 'coffee': { 'left': '# ', 'leftAlt': '### ', 'rightAlt': ' ###' },
     \ 'cpp': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
     \ 'crontab': { 'left': '#' },
     \ 'cs': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
@@ -200,8 +201,8 @@ let s:delimiterMap = {
     \ 'ist': { 'left': '%' },
     \ 'java': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
     \ 'javacc': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
-    \ 'javascript': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
-    \ 'javascript.jquery': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
+    \ 'javascript': { 'left': '// ', 'leftAlt': '/* ', 'rightAlt': ' */' },
+    \ 'javascript.jquery': { 'left': '// ', 'leftAlt': '/* ', 'rightAlt': ' */' },
     \ 'jess': { 'left': ';' },
     \ 'jgraph': { 'left': '(*', 'right': '*)' },
     \ 'jproperties': { 'left': '#' },
@@ -306,6 +307,7 @@ let s:delimiterMap = {
     \ 'rgb': { 'left': '!' },
     \ 'rib': { 'left': '#' },
     \ 'robots': { 'left': '#' },
+    \ 'ruby': { 'left': '# ', 'leftAlt': '=begin ', 'rightAlt': ' =end' },
     \ 'sa': { 'left': '--' },
     \ 'samba': { 'left': ';', 'leftAlt': '#' },
     \ 'sass': { 'left': '//', 'leftAlt': '/*' },
@@ -314,7 +316,7 @@ let s:delimiterMap = {
     \ 'scheme': { 'left': ';', 'leftAlt': '#|', 'rightAlt': '|#' },
     \ 'scilab': { 'left': '//' },
     \ 'scsh': { 'left': ';' },
-    \ 'scss': { 'left': '/*','right': '*/' },
+    \ 'scss': { 'left': '//', 'leftALt': '/*','rightAlt': '*/' },
     \ 'sed': { 'left': '#' },
     \ 'sgmldecl': { 'left': '--', 'right': '--' },
     \ 'sgmllnx': { 'left': '<!--', 'right': '-->' },
@@ -2357,7 +2359,7 @@ endfunction
 function s:Left(...)
     let params = a:0 ? a:1 : {}
 
-    let delim = has_key(params, 'alt') ? b:NERDCommenterDelims['leftAlt'] : b:NERDCommenterDelims['left'] 
+    let delim = has_key(params, 'alt') ? b:NERDCommenterDelims['leftAlt'] : b:NERDCommenterDelims['left']
 
     if delim == ''
         return ''
@@ -2536,7 +2538,7 @@ endfunction
 function s:Right(...)
     let params = a:0 ? a:1 : {}
 
-    let delim = has_key(params, 'alt') ? b:NERDCommenterDelims['rightAlt'] : b:NERDCommenterDelims['right'] 
+    let delim = has_key(params, 'alt') ? b:NERDCommenterDelims['rightAlt'] : b:NERDCommenterDelims['right']
 
     if delim == ''
         return ''
